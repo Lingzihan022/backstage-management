@@ -221,7 +221,7 @@ export default {
         // 当前的页数
         pagenum: 1,
         // 当前每页显示多少条数据
-        pagesize: 2,
+        pagesize: 2
       },
       userlist: [],
       total: 0,
@@ -232,7 +232,7 @@ export default {
         username: '',
         password: '',
         email: '',
-        mobile: '',
+        mobile: ''
       },
       // 添加表单的验证规则对象
       addFormRules: {
@@ -242,8 +242,8 @@ export default {
             min: 3,
             max: 10,
             message: '用户名的长度在3~10个字符之间',
-            trigger: 'blur',
-          },
+            trigger: 'blur'
+          }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
@@ -251,17 +251,17 @@ export default {
             min: 6,
             max: 15,
             message: '用户名的长度在6~15个字符之间',
-            trigger: 'blur',
-          },
+            trigger: 'blur'
+          }
         ],
         email: [
           { required: true, message: '请输入邮箱', trigger: 'blur' },
-          { validator: checkEmail, trigger: 'blur' },
+          { validator: checkEmail, trigger: 'blur' }
         ],
         mobile: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: checkMobile, trigger: 'blur' },
-        ],
+          { validator: checkMobile, trigger: 'blur' }
+        ]
       },
       // 控制修改用户对话框的显示与隐藏
       editDialogVisible: false,
@@ -272,19 +272,19 @@ export default {
       editFormRules: {
         email: [
           { required: true, message: '请输入邮箱', trigger: 'blur' },
-          { validator: checkEmail, trigger: 'blur' },
+          { validator: checkEmail, trigger: 'blur' }
         ],
         mobile: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
-          { validator: checkMobile, trigger: 'blur' },
-        ],
+          { validator: checkMobile, trigger: 'blur' }
+        ]
       },
       // 所有角色的数据列表
       rolesList: [],
       // 需要被分配角色的用户信息
       userInfo: {},
       // 已选中的分配角色值
-      selectedRoleId: '',
+      selectedRoleId: ''
     }
   },
   created() {
@@ -293,7 +293,7 @@ export default {
   methods: {
     async getUserList() {
       const { data: res } = await this.$http.get('users', {
-        params: this.queryInfo,
+        params: this.queryInfo
       })
       if (res.meta.status !== 200) {
         return this.$message.error('获取用户列表失败！')
@@ -371,7 +371,7 @@ export default {
           'users/' + this.editForm.id,
           {
             email: this.editForm.email,
-            mobile: this.editForm.mobile,
+            mobile: this.editForm.mobile
           }
         )
 
@@ -433,7 +433,7 @@ export default {
       const { data: res } = await this.$http.put(
         `users/${this.userInfo.id}/role`,
         {
-          rid: this.selectedRoleId,
+          rid: this.selectedRoleId
         }
       )
       if (res.meta.status !== 200) {
@@ -447,8 +447,8 @@ export default {
     setRoleDialogClosed() {
       this.selectedRoleId = ''
       this.userInfo = {}
-    },
-  },
+    }
+  }
 }
 </script>
 
