@@ -18,6 +18,8 @@ module.exports = {
         indent: ['off', 2],
         'no-console': 'off',
         'no-debugger': 'off',
-        'space-before-function-paren': 0
+        'space-before-function-paren': 0,
+        "camelcase": ["error", { "allow": ["aa_bb"] }]
+
     }
 }
