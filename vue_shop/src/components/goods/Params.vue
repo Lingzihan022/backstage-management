@@ -253,8 +253,8 @@ export default {
       //   添加参数的验证规则
       addFormRules: {
         attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' },
-        ],
+          { required: true, message: '请输入参数名称', trigger: 'blur' }
+        ]
       },
       //   修改参数的对话框显示与隐藏
       editDialogVisible: false,
@@ -263,9 +263,9 @@ export default {
       //    修改参数表单的验证规则
       editFormRules: {
         attr_name: [
-          { required: true, message: '请输入参数名称', trigger: 'blur' },
-        ],
-      },
+          { required: true, message: '请输入参数名称', trigger: 'blur' }
+        ]
+      }
       //   //   控制按钮与文本框的切换显示
       //   inputVisible: false,
       //   //   文本框中注入的内容
@@ -310,7 +310,7 @@ export default {
       const { data: res } = await this.$http.get(
         `categories/${this.cateId}/attributes`,
         {
-          params: { sel: this.activeName },
+          params: { sel: this.activeName }
         }
       )
       if (res.meta.status !== 200) {
@@ -346,7 +346,7 @@ export default {
           `categories/${this.cateId}/attributes`,
           {
             attr_name: this.addForm.attr_name,
-            attr_sel: this.activeName,
+            attr_sel: this.activeName
           }
         )
         if (res.meta.status !== 201) {
@@ -378,7 +378,7 @@ export default {
       this.$refs.editFormRef.validate(async (valid) => {
         if (!valid) return
         const {
-          data: res,
+          data: res
         } = await this.$http.put(
           `categories/${this.cateId}/attributes/${this.editForm.attr_id}`,
           { attr_name: this.editForm.attr_name, attr_sel: this.activeName }
@@ -401,7 +401,7 @@ export default {
         {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
-          type: 'warning',
+          type: 'warning'
         }
       ).catch((err) => err)
       // 用户取消删除
@@ -459,14 +459,14 @@ export default {
           attr_name: row.attr_name,
           attr_sel: row.attr_sel,
           //   需要将数组用空格拼接成字符串
-          attr_vals: row.attr_vals.join(' '),
+          attr_vals: row.attr_vals.join(' ')
         }
       )
       if (res.meta.status !== 200) {
         return this.$message.error('修改参数失败')
       }
       this.$message.success('修改分类成功')
-    },
+    }
   },
   //   计算属性
   computed: {
@@ -490,8 +490,8 @@ export default {
         return '动态参数'
       }
       return '静态属性'
-    },
-  },
+    }
+  }
 }
 </script>
 
