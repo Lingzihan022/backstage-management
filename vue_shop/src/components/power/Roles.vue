@@ -61,7 +61,7 @@
                       @close="removeRightById(scope.row, item3.id)"
                       closable
                       type="warning"
-                      v-for="(item3, i3) in item2.children"
+                      v-for="item3 in item2.children"
                       :key="item3.id"
                       >{{ item3.authName }}</el-tag
                     >
@@ -192,7 +192,7 @@ export default {
       // 添加角色的信息
       roleForm: {
         roleName: '',
-        roleDesc: ''
+        roleDesc: '',
       },
       // 添加表单的验证规则对象
       roleFormRules: {
@@ -202,8 +202,8 @@ export default {
             min: 1,
             max: 10,
             message: '用户名的长度在1~10个字符之间',
-            trigger: 'blur'
-          }
+            trigger: 'blur',
+          },
         ],
         roleDesc: [
           { required: true, message: '请输入角色描述', trigger: 'blur' },
@@ -211,9 +211,9 @@ export default {
             min: 1,
             max: 15,
             message: '角色描述在1~15个字符之间',
-            trigger: 'blur'
-          }
-        ]
+            trigger: 'blur',
+          },
+        ],
       },
       // 查询到的角色信息对象
       editForm: {},
@@ -225,8 +225,8 @@ export default {
             min: 1,
             max: 10,
             message: '用户名的长度在1~10个字符之间',
-            trigger: 'blur'
-          }
+            trigger: 'blur',
+          },
         ],
         roleDesc: [
           { required: true, message: '请输入角色描述', trigger: 'blur' },
@@ -234,9 +234,9 @@ export default {
             min: 1,
             max: 15,
             message: '角色描述在1~15个字符之间',
-            trigger: 'blur'
-          }
-        ]
+            trigger: 'blur',
+          },
+        ],
       },
       // 控制分配权限对话框的显示与隐藏
       setRightDialogVisible: false,
@@ -245,12 +245,12 @@ export default {
       // 树形控件的属性绑定对象
       treeProps: {
         label: 'authName',
-        children: 'children'
+        children: 'children',
       },
       // 默认选中的节点ID值数组
       defKeys: [],
       // 当前即将分配角色权限的id
-      roleId: ''
+      roleId: '',
     }
   },
   created() {
@@ -277,7 +277,7 @@ export default {
         // 可以发起添加角色的网络请求
         const { data: res } = await this.$http.post('roles', {
           roleName: this.roleForm.roleName,
-          roleDesc: this.roleForm.roleDesc
+          roleDesc: this.roleForm.roleDesc,
         })
         console.log(res.meta.status)
         if (res.meta.status !== 201) {
@@ -341,7 +341,7 @@ export default {
           'roles/' + this.editForm.roleId,
           {
             roleName: this.editForm.roleName,
-            roleDesc: this.editForm.roleDesc
+            roleDesc: this.editForm.roleDesc,
           }
         )
         console.log(res.meta.status)
@@ -418,7 +418,7 @@ export default {
     async allotRights() {
       const keys = [
         ...this.$refs.treeRef.getCheckedKeys(),
-        ...this.$refs.treeRef.getHalfCheckedKeys()
+        ...this.$refs.treeRef.getHalfCheckedKeys(),
       ]
       // 转换成以逗号分隔的字符串
       const idStr = keys.join(',')
@@ -434,8 +434,8 @@ export default {
       this.getRolesList()
       this.setRightDialogVisible = false
       // console.log(keys)
-    }
-  }
+    },
+  },
 }
 </script>
 
